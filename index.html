@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             font-family: Arial, sans-serif;
             text-align: center;
+            overflow: hidden;
         }
 
         h1 {
@@ -54,6 +55,23 @@
             color: white;
             display: none;
         }
+
+        /* Fullscreen error overlay */
+        #errorScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            color: red;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            font-weight: bold;
+            z-index: 9999;
+        }
     </style>
 </head>
 
@@ -66,23 +84,22 @@
         <button id="noBtn">nem, sajnálom 💔</button>
     </div>
 
-    <div id="message">Mertél volna mást nyomni! 💕 Boldog Valentin-napot! 💘</div>
+    <div id="message">mertél volna mást nyomni! 💕 Boldog Valentin-napot! 💘</div>
+
+    <div id="errorScreen">error >:</div>
 
     <script>
         const yesBtn = document.getElementById("yesBtn");
         const noBtn = document.getElementById("noBtn");
         const message = document.getElementById("message");
-
-        let yesSize = 2;
-
-        noBtn.addEventListener("click", () => {
-            yesSize += 0.3;
-            yesBtn.style.fontSize = yesSize + "rem";
-        });
+        const errorScreen = document.getElementById("errorScreen");
 
         yesBtn.addEventListener("click", () => {
             message.style.display = "block";
-            noBtn.style.display = "none";
+        });
+
+        noBtn.addEventListener("click", () => {
+            errorScreen.style.display = "flex";
         });
     </script>
 
